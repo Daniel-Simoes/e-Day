@@ -1,20 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 
 import './styles.css'
 
 export default function Profile() {
-    useEffect(() => {
-        async function loadSpots() {
-            const user_id = localStorage.getItem('user');
-            const response = await api.get('/profile', {
-                headers: { user_id }
-            });
+  const [spots, setSpots]  = useState([]);
 
-            console.log(response.data);
+  useEffect(() => {
+    async function loadSpots() {
+        const user_id = localStorage.getItem('user');
+        const response = await api.get('/profile', {
+          headers: { user_id }
+				}
+			);
+
+        setSpots(response.data);
         }     
         loadSpots();
     }, []);
 
-    return <h1>Profile</h1>
-}
+    return (
+    	<>
+        <ul className="spot-list">
+            {spots.map(spot => (
+                <li key={spot._id}>
+                    <header />
+                    <strong>{spot.company}</strong>
+                </li>
+            ))}
+        </ul>
+			</>
+		)
+	}
