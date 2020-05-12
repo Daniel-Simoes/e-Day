@@ -58,14 +58,14 @@ img{
 
 .content form label {
   font-size: 14px;
-  color: #333;
+  color: #FFF;
   font-weight: bld;
   margin-bottom: 8px;
 }
 
 .content form input {
   margin-bottom: 20px;
-  border: 1px solid rgba(221, 221, 221, 0.514);
+  border: 1px solid #fff;
   border-radius: 50px;
   height: 45px;
   padding: 0 15px;
@@ -74,7 +74,7 @@ img{
 
 .content form label span {
   font-weight: normal;
-  color: #FFF;
+  color: rgba(255, 253, 253, 0.808);
   font-size: 12px;
 }
 
