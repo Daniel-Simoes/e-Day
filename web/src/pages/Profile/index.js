@@ -30,7 +30,7 @@ export default function Profile() {
                 </li>
             ))}
         </ul>
-						<Link to="/">
+						<Link to="/newRegister">
                 <button className="btn">
                     Register a new Company
                 </button>

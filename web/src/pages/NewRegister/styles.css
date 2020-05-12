@@ -1,0 +1,19 @@
+label#thumbnail {
+  margin-bottom: 10px;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  cursor: pointer;
+  display: flex;
+  height: 160px;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.imgUpdate {
+  width: 80px;
+  height: 80px;
+}
+ 
+label#thumbnail input {
+  display: none;
+}
