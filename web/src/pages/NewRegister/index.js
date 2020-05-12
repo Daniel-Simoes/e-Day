@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import camera from '../../assets/camera.png';
 
 import './styles.css';
 
 export default function New({ history }) {
-    //const [thumbnail, setThumbnail] = useState(null);
+    const [thumbnail, setThumbnail] = useState(null);
     const [company, setCompany] = useState('');
     const [techs, setTechs] = useState('');
+
+    const preview = useMemo(() => {
+      return thumbnail ? URL.createObjectURL(thumbnail) : null;
+  }, [thumbnail])
     
 
     async function handleSubmit() {
@@ -15,8 +19,8 @@ export default function New({ history }) {
 
     return (
         <form onSubmit={handleSubmit}>
-              <label id="thumbnail">
-                <input type="file"/>
+              <label id="thumbnail" style={{ backgroundImage: `url(${preview})`}}>
+                <input type="file" onChange={event => setThumbnail(event.target.files[0])}/>
                 <img className="imgUpdate"src={camera} alt="Select img" />
             </label>
 
