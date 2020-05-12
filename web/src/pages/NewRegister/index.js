@@ -19,10 +19,13 @@ export default function New({ history }) {
 
     return (
         <form onSubmit={handleSubmit}>
-              <label id="thumbnail" style={{ backgroundImage: `url(${preview})`}}>
+              <label 
+                id="thumbnail" 
+                style={{ backgroundImage: `url(${preview})`}}
+                className={thumbnail ? 'has-thumbnail' : ''}>
                 <input type="file" onChange={event => setThumbnail(event.target.files[0])}/>
                 <img className="imgUpdate"src={camera} alt="Select img" />
-            </label>
+              </label>
 
             <label htmlFor="company">COMPANY *</label>
             <input

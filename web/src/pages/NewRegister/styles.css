@@ -17,3 +17,11 @@ label#thumbnail {
 label#thumbnail input {
   display: none;
 }
+
+label#thumbnail.has-thumbnail {
+  border: 0;
+}
+
+label#thumbnail.has-thumbnail .imgUpdate{
+  display: none;
+}
