@@ -15,7 +15,7 @@ export default function New({ history }) {
      
     async function handleSubmit(event) {
       event.preventDefault();
-      
+
       const data = new FormData();
       const user_id = localStorage.getItem('user');
 
@@ -56,6 +56,7 @@ export default function New({ history }) {
                 onChange={event => setTechs(event.target.value)}
             />
             <button type="submit" className="btn">Register</button>
+            <button type="submit" className="btnBack">Back</button>
         </form>
     )
 }

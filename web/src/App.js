@@ -6,10 +6,11 @@ import Routes from './routes';
 export default function App() {
   return (
     <div className="container">
-      <img src={logo} alt="e'Day" />
+        <img src={logo} alt="e'Day" /> 
     <div className="content">
      <Routes />
       </div>
       </div>
   );
 }
+
