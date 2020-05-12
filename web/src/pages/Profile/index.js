@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import './styles.css'
@@ -24,11 +25,17 @@ export default function Profile() {
         <ul className="spot-list">
             {spots.map(spot => (
                 <li key={spot._id}>
-                    <header />
+                    <header style={{ backgroundImage: `url(${spot.thumbnail_url})` }} />
                     <strong>{spot.company}</strong>
                 </li>
             ))}
         </ul>
+						<Link to="/">
+                <button className="btn">
+                    Register a new Company
+                </button>
+            </Link>
+				
 			</>
 		)
 	}
