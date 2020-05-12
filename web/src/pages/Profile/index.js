@@ -3,7 +3,7 @@ import api from '../../services/api';
 
 import './styles.css'
 
-export default function Dashboard() {
+export default function Profile() {
     useEffect(() => {
         async function loadSpots() {
             const user_id = localStorage.getItem('user');
@@ -16,5 +16,5 @@ export default function Dashboard() {
         loadSpots();
     }, []);
 
-    return <h1>Dashboard</h1>
+    return <h1>Profile</h1>
 }
