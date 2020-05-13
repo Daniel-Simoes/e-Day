@@ -102,6 +102,7 @@ input: {
   marginBottom: 16,
   borderRadius: 50
 },
+
 button: {
   height: 42,
   backgroundColor: '#65CDEF',

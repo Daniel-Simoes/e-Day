@@ -6,7 +6,7 @@ import SpotList from '../../components/SpotList';
 import logo from '../../assets/logo.png';
 import Background from '../../assets/background.jpg';
 
-const image = Background
+const image = Background;
 
 export default function List() {
     const [techs, setTechs] = useState([]);
