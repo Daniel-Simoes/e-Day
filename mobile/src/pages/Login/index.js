@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, KeyboardAvoidingView, Platform, ImageBackground, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, AsyncStorage, KeyboardAvoidingView, Platform, ImageBackground, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 import api from '../../services/api';
 
@@ -13,14 +13,18 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
-  async function handleSubmit() {
+  async function handleSubmit({ navigation }) {
     const response = await api.post('/sessions', {
         email
     })
 
     const { _id } = response.data;
 
-    console.log(_id);
+    await AsyncStorage.setItem('user', _id);
+    await AsyncStorage.setItem('techs', techs);
+
+    navigation.navigate('Dashboard');
+
   }
   return (
     <>
