@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Text, SafeAreaView, ImageBackground, AsyncStorage, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
+import api from '../../services/api';
+
 import Background from '../../assets/background.jpg';
 
 const image = Background;
@@ -11,7 +13,20 @@ export default function Booking( { navigation }) {
   const id = navigation.getParam('id');
 
   async function handleSubmit() {
-    }
+    const user_id = await AsyncStorage.getItem('user');
+
+    await api.post(`/spots/${id}/bookings`, {
+      date
+  }, {
+      headers: { user_id }
+  })
+
+  navigation.navigate('List');
+  
+  }
+  function handleCancel() {
+    navigation.navigate('Dashboard');
+}
 
   return (
     <>
@@ -31,7 +46,7 @@ export default function Booking( { navigation }) {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Booking</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.button, styles.cancelButton]}>
+      <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
         <Text style={styles.cancelButtonText}>Cancel</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -102,7 +117,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-  },
-  
+  }
   });
 
