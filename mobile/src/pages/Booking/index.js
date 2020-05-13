@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, ImageBackground, AsyncStorage, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, Alert, ImageBackground, AsyncStorage, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 import api from '../../services/api';
 
@@ -21,7 +21,16 @@ export default function Booking( { navigation }) {
       headers: { user_id }
   })
 
-  navigation.navigate('List');
+  Alert.alert(
+    "Alert",
+    "The Booking has been done",
+    [
+      { text: "OK"}
+    ],
+    { cancelable: false }
+  );
+
+  navigation.navigate('Dashboard');
   
   }
   function handleCancel() {
@@ -43,7 +52,7 @@ export default function Booking( { navigation }) {
         onChangeText={setDate}
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Booking</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
