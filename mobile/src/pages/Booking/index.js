@@ -1,9 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 
-// import { Container } from './styles';
+export default function Booking( { navigation }) {
+const id = navigation.getParam('id');
 
-export default function Booking() {
-  return <View />;
+  return (
+    <SafeAreaView> 
+      <Text>{id}</Text>
+    </SafeAreaView>     
+  );
 }
 

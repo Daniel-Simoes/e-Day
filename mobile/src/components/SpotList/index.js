@@ -19,8 +19,8 @@ function SpotList({ tech, navigation }) {
         loadSpots();
     }, []);
 
-    function handleNavigate() {
-      navigation.navigate('Book');
+    function handleNavigate(id) {
+      navigation.navigate('Book', { id });
   }
 
     return (<View style={styles.container}>
@@ -36,7 +36,7 @@ function SpotList({ tech, navigation }) {
                     <View style={styles.listItem}>
                         <Image style={styles.thumbnail} source={{ uri: item.thumbnail_url }} />
                         <Text style={styles.company}>{item.company}</Text>
-                        <TouchableOpacity onPress={handleNavigate} style={styles.button}>
+                        <TouchableOpacity onPress={() => handleNavigate(item._id)} style={styles.button}>
                             <Text style={styles.buttonText}>Booking</Text>
                         </TouchableOpacity>
                     </View>
