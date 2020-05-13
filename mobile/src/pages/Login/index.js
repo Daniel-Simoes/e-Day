@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, KeyboardAvoidingView, Platform, ImageBackground, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+
+import api from '../../services/api';
 
 import logo from '../../assets/logo.png';
 import Background from '../../assets/background.jpg';
@@ -8,6 +10,18 @@ import Background from '../../assets/background.jpg';
 const image = Background
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [techs, setTechs] = useState('');
+
+  async function handleSubmit() {
+    const response = await api.post('/sessions', {
+        email
+    })
+
+    const { _id } = response.data;
+
+    console.log(_id);
+  }
   return (
     <>
     <ImageBackground source={image} style={styles.image}>
@@ -24,6 +38,8 @@ export default function Login() {
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
+            value={email}
+            onChangeText={setEmail}
         />
         <Text style={styles.label}>TECHNOLOGIES *</Text>
         <TextInput
@@ -32,8 +48,10 @@ export default function Login() {
             placeholderTextColor="#999"
             autoCapitalize="words"
             autoCorrect={false}
+            value={techs}
+            onChangeText={setTechs}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={handleSubmit} style={styles.button}>
             <Text style={styles.buttonText}>Look for Experiences</Text>
         </TouchableOpacity>
      </View> 
@@ -90,4 +108,4 @@ image: {
   resizeMode: "cover",
   justifyContent: "center"
 },
-})
+});
