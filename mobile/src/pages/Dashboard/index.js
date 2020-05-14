@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, ImageBackground, StyleSheet, Image, AsyncStorage } from 'react-native';
+import socketio from 'socket.io-client';
+import { Alert, SafeAreaView, ScrollView, ImageBackground, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 import SpotList from '../../components/SpotList';
 
@@ -10,6 +11,20 @@ const image = Background;
 
 export default function List() {
     const [techs, setTechs] = useState([]);
+
+    useEffect(() => {
+      AsyncStorage.getItem('user').then(user_id => {
+          const socket = socketio('http://localhost:3333', {
+              query: { user_id }
+          });
+
+
+          socket.on('booking_response', booking => {
+            Alert.alert(`Your booking in ${booking.spot.company} on ${booking.date} was ${booking.approved ? 'APPROVED' : 'REJECTED'}`)
+        })
+    })
+}, []);
+
 
     useEffect(() => {
         AsyncStorage.getItem('techs').then(storagedTechs => {
