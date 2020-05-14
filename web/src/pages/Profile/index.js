@@ -10,8 +10,15 @@ export default function Profile() {
 
 
   useEffect(() => {
-    const socket = socketio('http://localhost:3333');
-}, []);
+    const user_id = localStorage.getItem('user');
+        const socket = socketio('http://localhost:3333', {
+            query: { user_id },
+        }); 
+    
+        socket.on('booking_request', data => {
+            console.log(data);
+        })
+    }, []);
 
   useEffect(() => {
     async function loadSpots() {
@@ -45,4 +52,4 @@ export default function Profile() {
 				
 			</>
 		)
-	}
+}

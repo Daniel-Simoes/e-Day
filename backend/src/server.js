@@ -12,14 +12,27 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-io.on('connection', socket => {
-    console.log("Connected", socket.id );
-});
-
 mongoose.connect('mongodb+srv://eday:eday@eday-tvuy0.mongodb.net/eday?retryWrites=true&w=majority', {
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
 })
+
+
+const connectedUsers = {};
+
+io.on('connection', socket => {
+    const { user_id } = socket.handshake.query;
+
+    connectedUsers[user_id] = socket.id;
+});
+
+app.use((req, res, next) => {
+    req.io = io;
+    req.connectedUsers = connectedUsers;
+
+    return next();
+});
+
 
 app.use(cors());
 app.use(express.json());
