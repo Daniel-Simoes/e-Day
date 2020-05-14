@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
       color: '#444',
       paddingHorizontal: 20,
       marginBottom: 15,
+      
   },
 
   bold: {
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#333',
       marginTop: 10,
+      alignItems: 'center',
   },
 
   button: {
