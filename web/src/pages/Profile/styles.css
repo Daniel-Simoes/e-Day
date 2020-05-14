@@ -27,3 +27,65 @@ ul.spot-list li strong {
   color: #FFF;
   margin: auto;
 }
+
+.strongNotifications {
+ font-size: 16px;
+  color: rgba(255, 255, 255, 0.664);
+ 
+}
+
+ul.notifications {
+  list-style: none;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+ul.notifications li {
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFF;
+}
+
+ul.notifications li button {
+  margin-right: 10px;
+  border: 0;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btnPermission {
+  display: flex;
+}
+
+ul.notifications li button.accept {
+  border: 0;
+  border-radius: 50px;
+  width: 50%;
+  height: 32px;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #eab57933;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+ul.notifications li button.reject {
+  border: 0;
+  margin-top: 10px;
+  border-radius: 50px;
+  width: 50%;
+  height: 32px;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #eab57933;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s;
+}

@@ -41,10 +41,12 @@ export default function Profile() {
               {requests.map(request => (
                 <li key={request._id}>
                   <p>
-                    <strong>{request.user.email}</strong> está solicitando uma reserva em <strong>{request.spot.company}</strong> para a data: <strong>{request.date}</strong>.
+                    <strong className="strongNotifications">{request.user.email}</strong> is requesting to visit <strong className="strongNotifications">{request.spot.company}</strong> in <strong>{request.date}</strong>.
                   </p>
-                  <button>ACEITAR</button>
-                  <button>REJEITAR</button>
+                  <div className="btnPermission">
+                  <button className="accept">ACEITAR</button>
+                  <button className="reject">REJEITAR</button>
+                  </div>
                 </li>
               ))}
         </ul>
