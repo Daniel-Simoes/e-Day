@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import socketio from 'socket.io-client';
-import { Alert, SafeAreaView, ScrollView, ImageBackground, StyleSheet, Image, AsyncStorage } from 'react-native';
+import { Alert, Text, TouchableOpacity, SafeAreaView, ScrollView, ImageBackground, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 import SpotList from '../../components/SpotList';
 
@@ -9,8 +9,9 @@ import Background from '../../assets/background.jpg';
 
 const image = Background;
 
-export default function List() {
+export default function Dashboard({ navigation }) {
     const [techs, setTechs] = useState([]);
+
 
     useEffect(() => {
       AsyncStorage.getItem('user').then(user_id => {
@@ -34,6 +35,10 @@ export default function List() {
         })
     }, []);
 
+    function handleLogout() {
+        navigation.navigate('Login');
+    }
+
     return (
       <>
       <ImageBackground source={image} style={styles.image} opacity="0.3">
@@ -43,7 +48,11 @@ export default function List() {
               {techs.map(tech => <SpotList key={tech} tech={tech} /> )}
             </ScrollView>
         </SafeAreaView>
+        <TouchableOpacity  onPress={handleLogout} style={styles.button}>
+        <Text style={styles.buttonText}>Log out</Text>
+      </TouchableOpacity>
       </ImageBackground>
+     
       </>
     )
 }
@@ -63,6 +72,19 @@ const styles = StyleSheet.create({
       flex: 1,
       resizeMode: "cover",
       justifyContent: "center",
+    },
+    button: {
+        height: 68,
+        backgroundColor: 'rgba(0, 0, 0, 0.150)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    buttonText: {
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop:-10
     },
 })
 

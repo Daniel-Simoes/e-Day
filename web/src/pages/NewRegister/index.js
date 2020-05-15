@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import camera from '../../assets/camera.png';
 
@@ -56,7 +57,11 @@ export default function New({ history }) {
                 onChange={event => setTechs(event.target.value)}
             />
             <button type="submit" className="btn">Register</button>
-            <button type="submit" className="btnBack">Back</button>
+
+            <Link to="/profile">
+              <button type="submit" className="btnBack">Back</button>
+            </Link>
+            
         </form>
     )
 }

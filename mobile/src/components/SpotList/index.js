@@ -20,7 +20,7 @@ function SpotList({ tech, navigation }) {
     }, []);
 
     function handleNavigate(id) {
-      navigation.navigate('Book', { id });
+      navigation.navigate('Booking', { id });
   }
 
     return (<View style={styles.container}>

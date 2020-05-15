@@ -18,8 +18,8 @@ export default function Login({ history }) {
 
   return (
     <>
-      <p>
-      Introduce your  <strong>Company</strong> to new  <strong>talent</strong> and win an admirer.
+      <p className="title">
+      Introduce your  <strong>Company</strong> to new  <strong>talent</strong> and win an<br/> admirer.
       </p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">E-MAIL *</label>
@@ -33,7 +33,7 @@ export default function Login({ history }) {
         <button type="submit" className="btn">Enter</button>
       </form>
       <div className="footer">
-        <p>*A valide email is requeire</p>
+        <p className="orientation">*A valide email is requeire</p>
       </div>
     </>
   )

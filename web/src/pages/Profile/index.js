@@ -77,7 +77,10 @@ export default function Profile() {
                     Register a new Company
                 </button>
             </Link>
-						<button type="submit" className="btnBack">Log out</button>
+            <Link to="/">
+              <button type="submit" className="btnBack">Log out</button>
+            </Link>
+						
 				
 			</>
 		)
