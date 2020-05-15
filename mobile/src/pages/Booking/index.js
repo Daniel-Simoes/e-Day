@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, Alert, ImageBackground, AsyncStorage, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Image, Text, SafeAreaView, Alert, ImageBackground, AsyncStorage, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import DatePicker from 'react-native-datepicker';
+
 
 import api from '../../services/api';
 
+import logo from '../../assets/logo.png';
 import Background from '../../assets/background.jpg';
 
 const image = Background;
@@ -41,16 +44,27 @@ export default function Booking( { navigation }) {
     <>
     <ImageBackground source={image} style={styles.image} opacity="0.3">
     <SafeAreaView style={styles.container}>
+    <Image style={styles.logo} source={logo} />
       <Text style={styles.label}>DATE *</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Choose a date"
-        placeholderColor="#999"
-        autoCapitalize="words"
-        autoCorrect={false}
-        value={date}
-        onChangeText={setDate}
-      />
+      <DatePicker
+        style={styles.datePicker}
+        date={date}
+        mode="date"
+        placeholder="Choose a Date"
+        format={`DD-MM-YYYY`}
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        showIcon={true}
+        onDateChange={setDate}
+        customStyles={{
+          dateInput: {
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            borderTopWidth: 0,
+            borderBottomWidth:0,
+          }
+      }}
+        />
 
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Booking</Text>
@@ -58,6 +72,7 @@ export default function Booking( { navigation }) {
       <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
         <Text style={styles.cancelButtonText}>Cancel</Text>
       </TouchableOpacity>
+      
     </SafeAreaView>
     </ImageBackground>
     </>  
@@ -67,7 +82,7 @@ export default function Booking( { navigation }) {
 const styles = StyleSheet.create({
   container: {
       margin: 30,
-      marginTop:-600,
+      marginTop:-500,
   }, 
   
   label: {
@@ -77,24 +92,12 @@ const styles = StyleSheet.create({
       marginTop: 30,
   },
   
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    backgroundColor: '#FFF',
-    paddingHorizontal: 20,
-    fontSize: 16,
-    color: '#444',
-    height: 46,
-    marginBottom: 16,
-    borderRadius: 50,
-  },
-  
   datePicker: {
-      borderColor: '#ddd',
+      backgroundColor:"#fff",
       width: '100%',
-      marginBottom: 20,
-      borderRadius: 2,
-      borderWidth: 1
+      marginBottom: 10,
+      borderRadius: 50,
+      
   }, 
   
   button: {
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
   },
   
   cancelButton: {
-      backgroundColor: '#FFF',
+      backgroundColor: '#eab679',
       marginTop: 10,
   },
   
@@ -117,15 +120,22 @@ const styles = StyleSheet.create({
   },
 
   cancelButtonText: {
-    color: '#65CDEF',
+    color: '#FFF',
     fontWeight: 'bold',
     fontSize: 16,
+},
+
+logo: {
+  height: 70,
+  resizeMode: 'contain',
+  alignSelf: 'center',
+  marginTop: 10
 },
 
   image: {
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-  }
+  }, 
   });
 

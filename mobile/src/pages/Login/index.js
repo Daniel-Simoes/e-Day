@@ -86,14 +86,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     marginTop: 30,
 
-},
+  },
 
-label: {
+ label: {
     fontWeight: 'bold',
     color: '#444',
     marginBottom: 8,
-},
-input: {
+ },
+ input: {
   backgroundColor: '#FFF',
   paddingHorizontal: 20,
   fontSize: 16,
